@@ -11,7 +11,8 @@
 module.exports = function(grunt) {
   
   var mime = require('mime'),
-  fs = require('fs');
+  fs = require('fs'),
+  sizer = require('image-size');
   
   grunt.registerMultiTask('base64Less', 'Base64 encode files. Into less file format.', function() {
     var data = this.data,
@@ -41,6 +42,11 @@ module.exports = function(grunt) {
 		base64Contents = contents.toString('base64');
 		
 		output += "@"+data.prefix+lessSafeFileName+":\"data:"+mime.lookup(filesToProcess[i])+";base64,"+base64Contents+"\";\n";
+		if(data.size){
+			var dimensions = sizer(filesToProcess[i]);
+			output += "@"+data.prefix+lessSafeFileName+"_width: "+dimensions.width+"px;\n";
+			output += "@"+data.prefix+lessSafeFileName+"_height: "+dimensions.height+"px;\n";	
+		}
 		grunt.log.writeln('Base64 encoded "' + filesToProcess[i] + '" to '+data.prefix+lessSafeFileName+' less entry.');    
 	}
 	grunt.file.write(data.dest, output);
