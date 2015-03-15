@@ -1,7 +1,7 @@
 {
   "name": "grunt-base64-less",
   "description": "Base64 encode files into less format.",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "homepage": "https://github.com/subasteve/grunt-base64-less",
   "author": {
     "name": "Stephen Hineline",
