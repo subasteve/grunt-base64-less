@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         return false;
     }
     
-    if(data.resize.imageMagick){
+    if(data.resize && data.resize.imageMagick){
     	    gm = gm.subClass({ imageMagick: true });
     }
 
