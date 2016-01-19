@@ -111,6 +111,7 @@ module.exports = function(grunt) {
 		}else{
 			output += create(data.prefix,lessSafeFileName,fileName,data.dimensions);
 		}
+		done();
 	}
 	
 	completeTimer = setInterval(function checkIfDone(){
