@@ -111,13 +111,13 @@ module.exports = function(grunt) {
 		}else{
 			output += create(data.prefix,lessSafeFileName,fileName,data.dimensions);
 		}
-		done();
 	}
 	
 	completeTimer = setInterval(function checkIfDone(){
 		if(pending.length === 0){
 			grunt.file.write(data.dest, output);	
 			clearInterval(completeTimer);
+			done();
 		}
 	}, 1000);
 
