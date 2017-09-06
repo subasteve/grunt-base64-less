@@ -1,6 +1,6 @@
 # grunt-base64-less
 
-> A grunt task to base 64 encode files into less format.
+> A grunt task to resize images if needed and base 64 encode files into [LESS](http://lesscss.org/) or [SASS](http://sass-lang.com/) format.
 
 ## Getting Started
 This plugin requires Grunt `^0.4.0`
@@ -32,6 +32,7 @@ grunt.initConfig({
       ],
       dest: "output.file",
       prefix: "font_",
+      sass: true, //[Optional] Defaults: false, output sass file & format
       dimensions: false, //[Optional] Obtain dimensions and add vars in less
       resize: { //[Optional] Resize images
       	imageMagick: true, //[Optional] defaults to GraphicsMagick if not set
@@ -44,10 +45,65 @@ grunt.initConfig({
 })
 ```
 
+### Example
+```js
+grunt.initConfig({
+  base64Less: {
+              font: {
+                  prefix: "font-",
+                  process: ['package/fonts/*', 'bowerBuild/fonts/*'],
+                  dest: 'package/less/font.less'
+              },
+              img: {
+                  prefix: "img-",
+                  process: ["package/img/*"],
+                  dest: 'package/less/img.less',
+                  dimensions: true
+              }
+          }
+})
+```
+
+Creates variables to be used in LESS or SASS.
+
+```css
+//Use in LESS
+@import "img.less";
+@import "font.less";
+
+.mountain {
+  background: url(@img-mountain_jpg);
+}
+
+@font-face {
+  font-family: 'font_here';
+  src: url('@{font-font_here_eot}');
+}
+
+```
+
+```css
+//Use in SASS
+@import "img";
+@import "font";
+
+.mountain {
+  background: url($img-mountain_jpg);
+}
+
+@font-face {
+  font-family: 'font_here';
+  src: url('${font-font_here_eot}');
+}
+```
+
+
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+0.3.0: Added unit tests, SASS support, Circleci build  
 0.2.5: Change grunt depends  
 0.2.4: Depends fixes  
 0.2.3: Bug fix  
