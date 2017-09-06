@@ -1,4 +1,6 @@
 # grunt-base64-less
+[![CircleCI](https://circleci.com/gh/subasteve/grunt-base64-less/tree/master.svg?style=svg&circle-token=c330d1c765ade038b09c96a979b34027bbf642f3)](https://circleci.com/gh/subasteve/grunt-base64-less/tree/master) [![Grunt](https://cdn.rawgit.com/aleen42/badges/master/src/grunt.svg)](http://gruntjs.com/)  
+![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)  
 
 > A grunt task to resize images if needed and base 64 encode files into [LESS](http://lesscss.org/) or [SASS](http://sass-lang.com/) format.
 
